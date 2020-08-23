@@ -11,6 +11,7 @@ Requirements:
 
 Detectron 2 Notes:
 * Written in python, this seems to not be easily integrated within a c# application.
+* Uses image URL references and local addresses for processing - Don't need to save/store the image locally.
 * 
 
 Microsoft Computer Vision API
@@ -25,5 +26,7 @@ Microsoft Computer Vision API
 
 .Net Quickstart Guide:
 * https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/client-library?pivots=programming-language-csharp
+Github of Quickstart Tutorial code:
+* https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs
 
 Requires latest version of .NET Core SDK and a free Azure account
