@@ -7,7 +7,6 @@ https://cloud.ibm.com/apidocs/language-translator?code=dotnet-standard
   * Completely free, nothing behind a paywall
   * Does utilize authentication/API Keys, but easy to implement
 
-
 Google Cloud Translate Quickstart Guide:
 https://cloud.google.com/translate/docs/quickstarts
   * May cost money
