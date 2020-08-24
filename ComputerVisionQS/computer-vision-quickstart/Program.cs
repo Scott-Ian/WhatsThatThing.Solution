@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Azure.CognitiveServices.Vision.ComupterVision;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 using System.Threading.Tasks;
 using System.IO;
@@ -18,8 +18,8 @@ namespace computer_vision_quickstart
     class Program
     {
         // Environment Variable Injection
-        static string subscriptionKey = ComputerVisionKey;
-        static string endpoint = ComputerVisionEndpoint;
+        static string subscriptionKey = EnvironmentVariables.ComputerVisionKey;
+        static string endpoint = EnvironmentVariables.ComputerVisionEndpoint;
 
         //URL of Image to analyze
         private const string ANALYZE_URL_IMAGE = "https://www.thesprucepets.com/thmb/3-ISVJpCrp9TUfeRdH1mfzJlHGg=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/golden-retriever-puppy-in-grass-923135452-5c887d4146e0fb00013365ba.jpg";
@@ -198,7 +198,7 @@ namespace computer_vision_quickstart
 
             // Display the found text
             Console.WriteLine();
-            vArgIterator textUrlFileResults = results.AnalyzeResult.ReadResults;
+            var textUrlFileResults = results.AnalyzeResult.ReadResults;
             foreach (ReadResult page in textUrlFileResults)
             {
                 foreach (Line line in page.Lines)
