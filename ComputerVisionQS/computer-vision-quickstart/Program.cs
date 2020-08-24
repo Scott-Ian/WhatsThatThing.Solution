@@ -21,7 +21,15 @@ namespace computer_vision_quickstart
         static string endpoint = ComputerVisionEndpoint;
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
+        }
+        
+        // Authenticates the computer vision client
+        public static ComputerVisionClient Authenticate(string endpoint, string key)
+        {
+            ComputerVisionClient client = new ComputerVisionClient(new ApiKeyServiceClientCredentials(key))
+                { Endpoint = endpoint };
+            return client;
         }
     }
 }
