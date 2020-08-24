@@ -12,15 +12,21 @@ using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Threading;
-using ComputerVisionQS;
+using WhatsThatThing;
 
 namespace WhatsThatThing
 {
     public class Program
     {
-        static string subscriptionKey = EnvironmentVariables.ComputerVisionKey;
-        static string endpoint = EnvironmentVariables.ComputerVisionEndpoint;
+        public static string subscriptionKey = EnvironmentVariables.ComputerVisionKey;
+        public static string endpoint = EnvironmentVariables.ComputerVisionEndpoint;
 
+        public static ComputerVisionClient Authenticate(string endpoint, string key)
+        {
+            ComputerVisionClient client = new ComputerVisionClient(new ApiKeyServiceClientCredentials(key))
+                { Endpoint = endpoint };
+            return client;
+        }
         //URL of Image to analyze
         private const string ANALYZE_URL_IMAGE = "https://i.ytimg.com/vi/MPV2METPeJU/maxresdefault.jpg";
         private const string READ_TEXT_URL_IMAGE = "https://media.npr.org/assets/img/2016/04/17/handwritten-note_wide-941ca37f3638dca912c8b9efda05ee9fefbf3147.jpg?s=1400";
@@ -39,12 +45,7 @@ namespace WhatsThatThing
                 });
         
         // Authenticates the computer vision client
-        public static ComputerVisionClient Authenticate(string endpoint, string key)
-        {
-            ComputerVisionClient client = new ComputerVisionClient(new ApiKeyServiceClientCredentials(key))
-                { Endpoint = endpoint };
-            return client;
-        }
+        
 
         /* 
         * ANALYZE IMAGE - URL IMAGE
