@@ -53,7 +53,7 @@ namespace computer_vision_quickstart
             Console.WriteLine();
 
             //Creating a list that defines the features to be extracted from the image.
-            List<VisualFeatureTypes?> features = new List<VisualFeatureTypes?>()
+            List<VisualFeatureTypes> features = new List<VisualFeatureTypes>()
             {
                 VisualFeatureTypes.Categories, VisualFeatureTypes.Description,
                 VisualFeatureTypes.Faces, VisualFeatureTypes.ImageType,
@@ -111,7 +111,7 @@ namespace computer_vision_quickstart
             Console.WriteLine("Faces:");
             foreach (var face in results.Faces)
             {
-                Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectange.Left}, "+ $"{face.FaceRectangel.Left}, {face.FaceRectange.Top + face.FaceRectangle.Width}, " + $"{face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, "+ $"{face.FaceRectangle.Left}, {face.FaceRectangle.Top + face.FaceRectangle.Width}, " + $"{face.FaceRectangle.Top + face.FaceRectangle.Height}");
             }
             Console.WriteLine();
 
@@ -139,9 +139,9 @@ namespace computer_vision_quickstart
             Console.WriteLine("Celeberties: ");
             foreach (var catergory in results.Categories)
             {
-                if (catergory.Detail?.Celeberties != null)
+                if (catergory.Detail?.Celebrities != null)
                 {
-                    foreach (var celeb in catergory.Detail.Celeberties)
+                    foreach (var celeb in catergory.Detail.Celebrities)
                     {
                         Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " + $"{celeb.FaceRectangle.Top}, {celeb.FaceRectangle.Height}, {celeb.FaceRectangle.Width}");
                     }
