@@ -31,34 +31,6 @@ function googleTranslateElementInit() {
         </tr>
       </thead>
       <tbody>
-        @foreach(var tag in Model.Tags)
-        {
-          if(tag.Confidence >= 0.75)
-          {
-            <tr>
-              <td>
-                @tag.Name
-              </td>
-              <td>
-                @tag.Confidence
-              </td>
-            </tr>
-          }
-        }
-        @foreach(var obj in Model.Objects)
-        {
-          if(obj.Confidence >= 0.75)
-          {
-            <tr>
-              <td>
-                @obj.ObjectProperty
-              </td>
-              <td>
-                @obj.Confidence
-              </td>
-            </tr>
-          }
-        }
         @foreach(var catergory in Model.Categories)
         {
           @if(catergory.Detail?.Celebrities != null)
@@ -98,7 +70,35 @@ function googleTranslateElementInit() {
               }
             }
           }
-        }       
+        } 
+        @foreach(var tag in Model.Tags)
+        {
+          if(tag.Confidence >= 0.75)
+          {
+            <tr>
+              <td>
+                @tag.Name
+              </td>
+              <td>
+                @tag.Confidence
+              </td>
+            </tr>
+          }
+        }
+        @foreach(var obj in Model.Objects)
+        {
+          if(obj.Confidence >= 0.75)
+          {
+            <tr>
+              <td>
+                @obj.ObjectProperty
+              </td>
+              <td>
+                @obj.Confidence
+              </td>
+            </tr>
+          }
+        }      
         </tbody>
     </table>
   </div>  
