@@ -6,11 +6,10 @@ ViewData["Title"] = "Home Page";
     <h1 class="display-4">Enter Image URL Below</h1>
     <br>
     <hr>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Details", "Home"))
     {
         @Html.Label("Enter URL: ")
-        @Html.TextBox("url")
+        @Html.TextBox("imageUrl")
     <input type = "submit" value = "Submit Image" class = "btn"/>
     }
 </div>
-

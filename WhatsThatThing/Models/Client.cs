@@ -9,9 +9,9 @@ namespace WhatsThatThing.Models
     public static string subscriptionKey = EnvironmentVariables.ComputerVisionKey;
     public static string endpoint = EnvironmentVariables.ComputerVisionEndpoint;
 
-    public static ComputerVisionClient Authenticate(string endpoint, string key)
+    public static ComputerVisionClient Authenticate()
     {
-      ComputerVisionClient client = new ComputerVisionClient(new ApiKeyServiceClientCredentials(key))
+      ComputerVisionClient client = new ComputerVisionClient(new ApiKeyServiceClientCredentials(subscriptionKey))
         { Endpoint = endpoint };
       return client;
     }

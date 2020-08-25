@@ -18,22 +18,26 @@ namespace WhatsThatThing
 {
     public class Program
     {
-        public static string subscriptionKey = EnvironmentVariables.ComputerVisionKey;
-        public static string endpoint = EnvironmentVariables.ComputerVisionEndpoint;
+        // public static string subscriptionKey = EnvironmentVariables.ComputerVisionKey;
+        // public static string endpoint = EnvironmentVariables.ComputerVisionEndpoint;
 
-        public static ComputerVisionClient Authenticate(string endpoint, string key)
-        {
-            ComputerVisionClient client = new ComputerVisionClient(new ApiKeyServiceClientCredentials(key))
-                { Endpoint = endpoint };
-            return client;
-        }
+        // public static ComputerVisionClient Authenticate(string endpoint, string key)
+        // {
+        //     ComputerVisionClient client = new ComputerVisionClient(new ApiKeyServiceClientCredentials(key))
+        //         { Endpoint = endpoint };
+        //     return client;
+        // }
+        
         //URL of Image to analyze
-        private const string ANALYZE_URL_IMAGE = "https://i.ytimg.com/vi/MPV2METPeJU/maxresdefault.jpg";
-        private const string READ_TEXT_URL_IMAGE = "https://media.npr.org/assets/img/2016/04/17/handwritten-note_wide-941ca37f3638dca912c8b9efda05ee9fefbf3147.jpg?s=1400";
+        // private const string ANALYZE_URL_IMAGE = "https://i.ytimg.com/vi/MPV2METPeJU/maxresdefault.jpg";
+        // private const string READ_TEXT_URL_IMAGE = "https://media.npr.org/assets/img/2016/04/17/handwritten-note_wide-941ca37f3638dca912c8b9efda05ee9fefbf3147.jpg?s=1400";
+        
         public static void Main(string[] args)
         {
-            ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
-            AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
+
+            // ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
+            // AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
+
             CreateHostBuilder(args).Build().Run();
         }
 
