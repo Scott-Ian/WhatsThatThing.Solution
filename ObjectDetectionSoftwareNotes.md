@@ -30,3 +30,10 @@ Github of Quickstart Tutorial code:
 * https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs
 
 Requires latest version of .NET Core SDK and a free Azure account
+
+Sample Image URL's:
+ * Bill Gates: https://www.gstatic.com/tv/thumb/persons/614/614_v9_bc.jpg
+ * Apple: https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Honeycrisp-Apple.jpg/1200px-Honeycrisp-Apple.jpg
+ * Dog: https://i.ytimg.com/vi/MPV2METPeJU/maxresdefault.jpg
+ * Messy Room: https://www.stayathomemum.com.au/cache/860x380-0/wp-content/uploads/2019/06/Antes-y-despu%C3%A9s-de-cuartos-sucios-8.jpg
+ * Group Photo: https://i2.wp.com/digital-photography-school.com/wp-content/uploads/2008/09/group-photo.png?w=600&h=1260&ssl=1
