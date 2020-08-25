@@ -2,7 +2,18 @@
 ViewData["Title"] = "Details";
 }
 
-@model ImageAnalysis
+@model Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models.ImageAnalysis
+
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 <img src="@ViewBag.ImageUrl">
 
 @foreach (var caption in @Model.Description.Captions)
@@ -15,7 +26,7 @@ ViewData["Title"] = "Details";
   <p>@category.Name with confidence @category.Score</p>
 }
 
-@foreach ( var tag in Model.Tags)
+@foreach (var tag in Model.Tags)
 {
   <p>@tag.Name with confidence @tag.Confidence</p>
 }
