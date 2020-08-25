@@ -1,0 +1,83 @@
+@{
+ViewData["Title"] = "Details";
+}
+
+@model Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models.ImageAnalysis
+
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<img src="@ViewBag.ImageUrl">
+
+@foreach (var caption in @Model.Description.Captions)
+{
+  <p>@caption.Text with confidence @caption.Confidence</p>
+}
+
+@foreach(var category in Model.Categories)
+{
+  <p>@category.Name with confidence @category.Score</p>
+}
+
+@foreach (var tag in Model.Tags)
+{
+  <p>@tag.Name with confidence @tag.Confidence</p>
+}
+
+@foreach (var obj in Model.Objects)
+{
+  <p>@obj.ObjectProperty with confidence @obj.Confidence at location @obj.Rectangle.X, @obj.Rectangle.X + @obj.Rectangle.W, @obj.Rectangle.Y, @obj.Rectangle.Y + @obj.Rectangle.H</p>
+}
+
+@foreach (var brand in Model.Brands)
+{
+  <p>Logo of @brand.Name with confidence @brand.Confidence at location @brand.Rectangle.X, @brand.Rectangle.X + @brand.Rectangle.W, @brand.Rectangle.Y, @brand.Rectangle.Y + @brand.Rectangle.H</p>
+}
+
+@foreach (var face in Model.Faces)
+{
+  <p>A @face.Gender of age @face.Age at location @face.FaceRectangle.Left, @face.FaceRectangle.Left, @face.FaceRectangle.Top + @face.FaceRectangle.Width, @face.FaceRectangle.Top + @face.FaceRectangle.Height</p>
+}
+
+@foreach (var catergory in Model.Categories)
+{
+  if (catergory.Detail?.Celebrities != null)
+  {
+    foreach (var celeb in catergory.Detail.Celebrities)
+    {
+      <p>@celeb.Name with confidence @celeb.Confidence at location @celeb.FaceRectangle.Left, @celeb.FaceRectangle.Top, @celeb.FaceRectangle.Height, @celeb.FaceRectangle.Width</p>
+    }
+  }
+}
+
+@foreach (var category in Model.Categories)
+{
+  if (category.Detail?.Landmarks != null)
+  {
+    foreach (var landmark in category.Detail.Landmarks)
+    {
+      <p>@landmark.Name with confidence @landmark.Confidence</p>
+    }
+  }
+}
+
+<h3>Adult Content:</h3>
+<p>Has adult content: @Model.Adult.IsAdultContent with confidence @Model.Adult.AdultScore</p>
+<p>Has racy content: @Model.Adult.IsRacyContent with confidence @Model.Adult.RacyScore</p>
+
+<h3>Color Scheme:</h3>
+<p>Is black and white?: @Model.Color.IsBWImg</p>
+<p>Accent color: @Model.Color.DominantColorBackground</p>
+<p>Dominant foreground color: @Model.Color.DominantColorForeground</p>
+<p>Dominant colors: @string.Join(",", Model.Color.DominantColors)</p>
+
+<h3>Image Type:</h3>
+<p>Clip Art Type: @Model.ImageType.ClipArtType</p>
+<p>Line Drawing Type: @Model.ImageType.LineDrawingType</p>
