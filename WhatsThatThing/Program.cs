@@ -58,11 +58,13 @@ namespace WhatsThatThing
         */
         public static async Task AnalyzeImageUrl(ComputerVisionClient client, string imageUrl)
         {
-            Console.WriteLine("-------------------------------");
-            Console.WriteLine("ANALYZE IMAGE - URL");
-            Console.WriteLine();
+
+            // Console.WriteLine("-------------------------------");
+            // Console.WriteLine("ANALYZE IMAGE - URL");
+            // Console.WriteLine();
 
             //Creating a list that defines the features to be extracted from the image.
+            
             List<VisualFeatureTypes> features = new List<VisualFeatureTypes>()
             {
                 VisualFeatureTypes.Categories, VisualFeatureTypes.Description,
@@ -74,6 +76,7 @@ namespace WhatsThatThing
             
             Console.WriteLine($"Analyzing the image {Path.GetFileName(imageUrl)}");
             Console.WriteLine();
+
             // Analyze inputted image URL
             ImageAnalysis results = await client.AnalyzeImageAsync(imageUrl, features);
 

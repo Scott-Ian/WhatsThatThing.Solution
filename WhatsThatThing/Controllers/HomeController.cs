@@ -38,7 +38,7 @@ namespace WhatsThatThing.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Details(string imageUrl)
+        public async Task<IActionResult> Details(string imageUrl) //string language
         {
             ViewBag.ImageUrl = imageUrl;
             ComputerVisionClient client = Client.Authenticate();
@@ -50,6 +50,7 @@ namespace WhatsThatThing.Controllers
                 VisualFeatureTypes.Color, VisualFeatureTypes.Brands,
                 VisualFeatureTypes.Objects
             };
+            //
             Path.GetFileName(imageUrl);
             ImageAnalysis results = await client.AnalyzeImageAsync(imageUrl, features);
             return View(results);
