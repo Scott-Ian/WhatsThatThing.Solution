@@ -16,7 +16,7 @@ function googleTranslateElementInit() {
 
 <img src="@ViewBag.ImageUrl">
 
-@foreach (var caption in @Model.Description.Captions)
+@foreach (var caption in Model.Description.Captions)
 {
   <p>@caption.Text with confidence @caption.Confidence</p>
 }

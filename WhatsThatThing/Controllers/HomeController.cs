@@ -4,10 +4,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using WhatsThatThing.Models;
 using WhatsThatThing;
 
@@ -38,7 +41,7 @@ namespace WhatsThatThing.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Details(string imageUrl) //string language
+        public async Task<IActionResult> WebDetails(string imageUrl) //string language
         {
             ViewBag.ImageUrl = imageUrl;
             ComputerVisionClient client = Client.Authenticate();
@@ -50,9 +53,29 @@ namespace WhatsThatThing.Controllers
                 VisualFeatureTypes.Color, VisualFeatureTypes.Brands,
                 VisualFeatureTypes.Objects
             };
-            //
             Path.GetFileName(imageUrl);
             ImageAnalysis results = await client.AnalyzeImageAsync(imageUrl, features);
+            return View(results);
+        }
+
+        public async Task<IActionResult> LocalDetails(string imageFilePath)
+        {
+            ViewBag.ImageFilePath = imageFilePath;
+            string uriBase = Client.endpoint + "vision/v3.0/analyze";
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add(
+                "Ocp-Apim-Subscription-Key", Client.subscriptionKey);
+            string requestParamenters = "visualFeatures=Categories,Description,Color";
+            string uri = uriBase + "?" + requestParamenters;
+            HttpResponseMessage response;
+            byte[] byteData = Client.GetImageAsByteArray(imageFilePath);
+            using (ByteArrayContent content = new ByteArrayContent(byteData))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                response = await client.PostAsync(uri, content);
+            }
+            string contentString = await response.Content.ReadAsStringAsync();
+            string results = JToken.Parse(contentString).ToString();
             return View(results);
         }
     }
