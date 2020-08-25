@@ -61,6 +61,7 @@ namespace WhatsThatThing.Controllers
         public async Task<IActionResult> LocalDetails(string imageFilePath)
         {
             ViewBag.ImageFilePath = imageFilePath;
+            // tried to document this quickly last minute... i failed...
             string uriBase = Client.endpoint + "vision/v3.0/analyze";
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add(
