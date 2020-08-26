@@ -1,20 +1,22 @@
 ﻿@{
 ViewData["Title"] = "Home Page";
 }
+
 <div class="jumbotron jumbotron-fluid">
-    <h1 class="display-4">Try It Out</h1>
 </div>
+
 <div class="box">
-     <div class = "container">
-        <h1 class="display-4">Enter Image URL Below</h1>
+    <div class = "container">
+        <h1 class="display-3">Enter Image URL Below</h1>
         <br>
         <hr>
         @using (Html.BeginForm("Details", "Home"))
         {
-            @Html.Label("Enter URL: ")
+            <h3>ENTER URL: </h3>
             @Html.TextBox("imageUrl")
-            <br>
-        <input type = "submit" value = "Submit Image" class = "btn"/>
+            <h6>URLs ending in .jpg, .png .bmp ONLY<
+            <br><br>
+        <input type = "submit" value = "Submit Image" class = "btn btn-warning"/>
         }
     </div>
 </div>

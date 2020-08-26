@@ -1,5 +1,18 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+.navbar {
+  background-color: #00c4cc;
+}
+
+.navbar-brand {
+  color: black;
+  font-family: 'Lexend Peta', sans-serif;
+}
+
+.navbar-toggler {
+  border-color: solid 1px black;
+  
+}
 
 a.navbar-brand {
   white-space: normal;
@@ -9,16 +22,15 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: white;
 }
 
 .jumbotron {
-  background-image: url("/img/Whats That Thing.png");
+  background-image: url("/img/logo2.png");
   background-size:  cover;
   background-repeat: no-repeat;
-  padding-bottom: 40%;
+  padding-bottom: 35%;
   background-color: white;
-
 }
 
 .btn-primary {
@@ -29,8 +41,8 @@ a {
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: white;
+  border-color: none;
 }
 
 /* Sticky footer styles
@@ -104,21 +116,31 @@ body {
 
     color: black;
   }
-  
+
+  h1 {
+    font-family: 'Lexend Peta', sans-serif;
+  }
+
+  h3 {
+    font-family: 'Lexend Peta', sans-serif;
+  }
+  .btn-warning {
+    font-family: 'Lexend Peta', sans-serif;
+  }
   a {
     color: rgb(88, 208, 222);
   }
   
   
   .box {
-    background: rgba(252, 252, 252, 0.9);
+    background: rgb(252, 252, 252);
     border-radius: 10px;
     font-size: medium;
     border: 8px solid black;
     padding: 100px;
     padding-left: 100px;
     text-align: center;
-    margin: 10%;
+    margin: 0% 10% 2% 10%;
   }
   
   button {
