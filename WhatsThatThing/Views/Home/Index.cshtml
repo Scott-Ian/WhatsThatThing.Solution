@@ -2,15 +2,23 @@
 ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Enter Image URL Below</h1>
-    <br>
-    <hr>
-    @using (Html.BeginForm("Details", "Home"))
-    {
-        @Html.Label("Enter URL: ")
-        @Html.TextBox("imageUrl")
+<div class="jumbotron jumbotron-fluid">
+</div>
+
+<div class="box">
+    <div class = "container">
+        <h1 class="display-3">Enter Image URL Below</h1>
         <br>
-    <input type = "submit" value = "Submit Image" class = "btn"/>
-    }
+        <hr>
+        @using (Html.BeginForm("Details", "Home"))
+        {
+            <h3>ENTER URL: </h3>
+            <h6>(URLs ending in .jpg .png .bmp ONLY)</h6>
+            <br>
+            @Html.TextBox("imageUrl", null, new { @class="form-control"})
+            <br>
+            <br>
+        <input type = "submit" value = "Submit Image" class = "btn btn-warning"/>
+        }
+    </div>
 </div>

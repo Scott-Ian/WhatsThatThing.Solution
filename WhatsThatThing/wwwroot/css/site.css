@@ -1,5 +1,18 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+.navbar {
+  background-color: #00c4cc;
+}
+
+.navbar-brand {
+  color: black;
+  font-family: 'Lexend Peta', sans-serif;
+}
+
+.navbar-toggler {
+  border-color: solid 1px black;
+  
+}
 
 #translatedDescription {
   display: none;
@@ -21,7 +34,15 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: white;
+}
+
+.jumbotron {
+  background-image: url("/img/newlogo.png");
+  background-size:  cover;
+  background-repeat: no-repeat;
+  padding-bottom: 40%;
+  background-color: white;
 }
 
 .btn-primary {
@@ -32,8 +53,8 @@ a {
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: white;
+  border-color: none;
 }
 
 /* Sticky footer styles
@@ -97,3 +118,67 @@ body {
   .table-wrapper-scroll-y {
   display: block;
   }
+
+  body {
+    background: url(../img/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    color: black;
+  }
+
+  h1 {
+    font-family: 'Lexend Peta', sans-serif;
+  }
+
+  h3 {
+    font-family: 'Lexend Peta', sans-serif;
+  }
+  .btn-warning {
+    font-family: 'Lexend Peta', sans-serif;
+  }
+  a {
+    color: rgb(88, 208, 222);
+  }
+  
+  
+  .box {
+    background: whitesmoke;
+    border-radius: 10px;
+    font-size: medium;
+    border: 8px solid black;
+    padding: 100px;
+    padding-left: 100px;
+    text-align: center;
+    margin: 6% 10% 2% 10%;
+  }
+  
+  button {
+    margin: 5px;
+  }
+  
+  .navbtn {
+    margin-top: 5px;
+    margin-left: 5px;
+    font-weight: bold;
+  }
+  
+  
+  .btn a, button a  {
+    color: rgba(252, 252, 252, 1);
+  }
+  
+  .home {
+    margin-top: 5%;
+  }
+  
+    .logo {
+      margin-top: 7%;
+      width: 30%;
+    }
+    .home {
+      margin-top: 1%;
+    }
+
