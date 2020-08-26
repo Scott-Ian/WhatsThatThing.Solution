@@ -26,8 +26,9 @@ function googleTranslateElementInit() {
     <table class="table table-bordered table-striped mb-0">
       <thead>
         <tr>
-          <th scope="col">Object/Tag</th>
-          <th scope="col">Confidence Value</th>
+          <th scope="col" class="notranslate">English</th>
+          <th scope="col" class="notranslate">Object/Tag</th>
+          <th scope="col" class="notranslate">Confidence Value</th>
         </tr>
       </thead>
       <tbody>
@@ -40,6 +41,9 @@ function googleTranslateElementInit() {
               if(celeb.Confidence >=0.75)
               {
               <tr>
+                <td>
+                  <div class="notranslate">@celeb.Name</div>
+                </td>
                 <td>
                   @celeb.Name
                 </td>
@@ -61,6 +65,9 @@ function googleTranslateElementInit() {
               {
               <tr>
                 <td>
+                  <div class="notranslate">@landmark.Name</div>
+                </td>
+                <td>
                   @landmark.Name
                 </td>
                 <td>
@@ -77,6 +84,9 @@ function googleTranslateElementInit() {
           {
             <tr>
               <td>
+                <div class="notranslate">@tag.Name</div>
+              </td>
+              <td>
                 @tag.Name
               </td>
               <td>
@@ -90,6 +100,9 @@ function googleTranslateElementInit() {
           if(obj.Confidence >= 0.75)
           {
             <tr>
+              <td>
+                <div class="notranslate">@obj.ObjectProperty</div>
+              </td>
               <td>
                 @obj.ObjectProperty
               </td>
