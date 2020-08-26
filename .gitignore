@@ -1,3 +1,4 @@
 EnvironmentVariables.cs
 obj/
 bin/
+.vscode
