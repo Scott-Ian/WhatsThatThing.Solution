@@ -10,25 +10,125 @@ ViewData["Title"] = "Details";
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
 }
+
+function toggleTranslations()
+{
+  var translatedDescription = document.getElementById("translatedDescription");
+  var baseTable = document.getElementById("baseTable");
+  var translatedTable = document.getElementById("translatedTable");
+
+  if (translatedDescription.style.display === "none"){
+    translatedDescription.style.display = "block";
+    baseTable.style.display = "none";
+    translatedTable.style.display = "block";
+  } else {
+    translatedDescription.style.display = "none";
+    baseTable.style.display = "block";
+    translatedTable.style.display = "none";
+  }
+}
 </script>
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<h3>@Model.Description.Captions[0].Text</h3>
+<h3 class="notranslate">@Model.Description.Captions[0].Text</h3> 
+<h3 id="translatedDescription">@Model.Description.Captions[0].Text</h3>
+
+<button onclick="toggleTranslations()" type="button" class="btn btn-primary notranslate">Translate!</button>
 <div class="row">
   <div class="col-md-6 column">
     <div class="largeartwork">
       <img src="@ViewBag.ImageUrl" />
     </div>
   </div>
+
   <div class="table-wrapper-scroll-y my-custom-scrollbar">
 
-    <table class="table table-bordered table-striped mb-0">
+    <table id="baseTable" class="table table-bordered table-striped mb-0">
+      <thead>
+        <tr>
+          <th scope="col" class="notranslate">Object</th>
+          <th scope="col" class="notranslate">AI Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach(var catergory in Model.Categories)
+        {
+          @if(catergory.Detail?.Celebrities != null)
+          {
+            @foreach (var celeb in catergory.Detail.Celebrities)
+            {
+              if(celeb.Confidence >=0.75)
+              {
+              <tr>
+                <td>
+                  <div class="notranslate">@celeb.Name</div>
+                </td>
+                <td>
+                  @(Math.Round((double)celeb.Confidence, 3) * 100)%
+                </td>
+              </tr>
+              }
+            }
+          }
+        }
+        @foreach(var category in Model.Categories)
+        {
+          @if(category.Detail?.Landmarks != null)
+          {
+            @foreach (var landmark in category.Detail.Landmarks)
+            {
+              if(landmark.Confidence >=0.75)
+              {
+              <tr>
+                <td>
+                  <div class="notranslate">@landmark.Name</div>
+                </td>
+                <td>
+                  @(Math.Round((double)landmark.Confidence, 3) * 100)%
+                </td>
+              </tr>
+              }
+            }
+          }
+        } 
+        @foreach(var tag in Model.Tags)
+        {
+          if(tag.Confidence >= 0.75)
+          {
+            <tr>
+              <td>
+                <div class="notranslate">@tag.Name</div>
+              </td>
+              <td>
+                @(Math.Round((double)tag.Confidence, 3) * 100)%
+              </td>
+            </tr>
+          }
+        }
+        @foreach(var obj in Model.Objects)
+        {
+          if(obj.Confidence >= 0.75)
+          {
+            <tr>
+              <td>
+                <div class="notranslate">@obj.ObjectProperty</div>
+              </td>
+              <td>
+                @(Math.Round((double)obj.Confidence, 3) * 100)%
+              </td>
+            </tr>
+          }
+        }      
+        </tbody>
+    </table>
+
+    <table id="translatedTable" class="table table-bordered table-striped mb-0">
       <thead>
         <tr>
           <th scope="col" class="notranslate">English</th>
           <th scope="col" class="notranslate">Object/Tag</th>
-          <th scope="col" class="notranslate">Confidence Value</th>
+          <th scope="col" class="notranslate">AI Confidence</th>
         </tr>
       </thead>
       <tbody>
@@ -48,7 +148,7 @@ function googleTranslateElementInit() {
                   @celeb.Name
                 </td>
                 <td>
-                  @celeb.Confidence
+                  @(Math.Round((double)celeb.Confidence, 3) * 100)%
                 </td>
               </tr>
               }
@@ -71,7 +171,7 @@ function googleTranslateElementInit() {
                   @landmark.Name
                 </td>
                 <td>
-                  @landmark.Confidence
+                  @(Math.Round((double)landmark.Confidence, 3) * 100)%
                 </td>
               </tr>
               }
@@ -90,7 +190,7 @@ function googleTranslateElementInit() {
                 @tag.Name
               </td>
               <td>
-                @tag.Confidence
+                @(Math.Round((double)tag.Confidence, 3) * 100)%
               </td>
             </tr>
           }
@@ -107,7 +207,7 @@ function googleTranslateElementInit() {
                 @obj.ObjectProperty
               </td>
               <td>
-                @obj.Confidence
+                @(Math.Round((double)obj.Confidence, 3) * 100)%
               </td>
             </tr>
           }
