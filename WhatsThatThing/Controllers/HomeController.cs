@@ -52,8 +52,23 @@ namespace WhatsThatThing.Controllers
             };
             //
             Path.GetFileName(imageUrl);
+            
+            // Redirects to Invalid Image view if Computer Vision returns an error
+            // Assumes Error is due to a bad image url - is not of a direct image e.g., google.com
+            try
+            {
             ImageAnalysis results = await client.AnalyzeImageAsync(imageUrl, features);
             return View(results);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("InvalidImage");
+            }
+        }
+
+        public IActionResult InvalidImage()
+        {
+            return View();
         }
     }
 }
