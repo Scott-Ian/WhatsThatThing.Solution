@@ -1,15 +1,15 @@
 # WHAT'S THAT THING?
 
 #### _C# TEAM WEEK_
-#### By _**Ian Scott, Megan HepneKevin Davis**_
+#### By _**Ian Scott, Megan Hepner, Kevin Davis, Ben White, and Spencer Moody**_
 
-### An application that uses two separate AI services to first interpret hosted images on the web for what they are and then provide additional spoken language translation materials.
+### An application that uses two services to first interpret hosted images on the web for content and then provide additional spoken language translation materials.
 
 ![Photo AI/Translator](WhatsThatThing/App_Data/images/Tranaslator-Graphic-1200x630.jpg)
 
 ## **🍎 ABOUT**
 
-This an application that will take most common image files via their host URLs and use Microsoft Azure's Translator API to return the object's possible designations in English based on an AI confidence of 80% or higher. It will then provide the means to translate these returned results into 109 different languages with a Google Translate API.
+This an application that will take most common image files via their host URLs and use Microsoft Azure's Computer Vision API to return the object's possible designations in English based on an AI confidence of 75% or higher. It will then provide the means to translate these returned results into 109 different languages with Google Translate.
 
 ## **✅ REQUIREMENTS**
 * Install [Git v2.62.2+](https://git-scm.com/downloads/)
@@ -63,14 +63,19 @@ _No known bugs at this time._
 
 ## **📫 CONTACT AND SUPPORT**
 
-Contact : Megan Hepner
+Contact : [Ian Scott](IanScottDeveloper@gmail.com)
 
 ## 🔧Technologies Used
 
 * C#
 * ASP.NET MVC
 * Entity
-* MySql
+* Razor
+* Microsoft Computer Vision
+* JavaScript
+* HTML
+* API Integration
+* Google Translate
 
 
 ## **📘 License**
