@@ -12,6 +12,15 @@ a {
   color: #0366d6;
 }
 
+.jumbotron {
+  background-image: url("/img/Whats That Thing.png");
+  background-size:  cover;
+  background-repeat: no-repeat;
+  padding-bottom: 40%;
+  background-color: white;
+
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
@@ -85,3 +94,57 @@ body {
   .table-wrapper-scroll-y {
   display: block;
   }
+
+  body {
+    background: url(../img/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    color: black;
+  }
+  
+  a {
+    color: rgb(88, 208, 222);
+  }
+  
+  
+  .box {
+    background: rgba(252, 252, 252, 0.9);
+    border-radius: 10px;
+    font-size: medium;
+    border: 8px solid black;
+    padding: 100px;
+    padding-left: 100px;
+    text-align: center;
+    margin: 10%;
+  }
+  
+  button {
+    margin: 5px;
+  }
+  
+  .navbtn {
+    margin-top: 5px;
+    margin-left: 5px;
+    font-weight: bold;
+  }
+  
+  
+  .btn a, button a  {
+    color: rgba(252, 252, 252, 1);
+  }
+  
+  .home {
+    margin-top: 5%;
+  }
+  
+    .logo {
+      margin-top: 7%;
+      width: 30%;
+    }
+    .home {
+      margin-top: 1%;
+    }
+
