@@ -13,9 +13,11 @@ ViewData["Title"] = "Home Page";
         @using (Html.BeginForm("Details", "Home"))
         {
             <h3>ENTER URL: </h3>
-            @Html.TextBox("imageUrl")
-            <h6>URLs ending in .jpg, .png .bmp ONLY<
-            <br><br>
+            <h6>(URLs ending in .jpg .png .bmp ONLY)</h6>
+            <br>
+            @Html.TextBox("imageUrl", null, new { @class="form-control"})
+            <br>
+            <br>
         <input type = "submit" value = "Submit Image" class = "btn btn-warning"/>
         }
     </div>

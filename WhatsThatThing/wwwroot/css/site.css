@@ -26,10 +26,10 @@ a {
 }
 
 .jumbotron {
-  background-image: url("/img/logo2.png");
+  background-image: url("/img/newlogo.png");
   background-size:  cover;
   background-repeat: no-repeat;
-  padding-bottom: 35%;
+  padding-bottom: 40%;
   background-color: white;
 }
 
@@ -133,14 +133,14 @@ body {
   
   
   .box {
-    background: rgb(252, 252, 252);
+    background: whitesmoke;
     border-radius: 10px;
     font-size: medium;
     border: 8px solid black;
     padding: 100px;
     padding-left: 100px;
     text-align: center;
-    margin: 0% 10% 2% 10%;
+    margin: 6% 10% 2% 10%;
   }
   
   button {
