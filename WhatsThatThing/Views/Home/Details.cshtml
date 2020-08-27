@@ -27,10 +27,10 @@ function toggleTranslations()
 }
 </script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <br>
-  <div class = "container">
-  <h1 class="display-4">Description:</h1>
+<div class = "container">
+  <h1 class="display-4 notranslate">Description:</h1>
   <hr>
   <h3 class="notranslate">@Model.Description.Captions[0].Text</h3> 
   <h3 id="translatedDescription">@Model.Description.Captions[0].Text</h3>
@@ -38,186 +38,205 @@ function toggleTranslations()
   <h5>Select a language to translate to:</h5>
   <div id="google_translate_element"></div>
   <button onclick="toggleTranslations()" type="button" class="btn btn-warning notranslate">Translate</button>
-</script>
+  <br>
+  <br>
   <div class="row">
-    <div class="col-md-8 column">
+    <div class="col-md-6 column">
       <div class="largeartwork">
         <img src="@ViewBag.ImageUrl" />
       </div>
     </div>
-    <div class="col-md-4 column">
-      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
 
-        <table id="baseTable" class="table table-bordered table-striped mb-0">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col" class="notranslate">Object</th>
-              <th scope="col" class="notranslate">AI Confidence</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach(var catergory in Model.Categories)
+      <table id="baseTable" class="table table-bordered table-striped mb-0">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="notranslate">Object</th>
+            <th scope="col" class="notranslate">AI Confidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach(var catergory in Model.Categories)
+          {
+            @if(catergory.Detail?.Celebrities != null)
             {
-              @if(catergory.Detail?.Celebrities != null)
+              @foreach (var celeb in catergory.Detail.Celebrities)
               {
-                @foreach (var celeb in catergory.Detail.Celebrities)
+                if(celeb.Confidence >=0.75)
                 {
-                  if(celeb.Confidence >=0.75)
-                  {
-                  <tr>
-                    <td>
-                      <div class="notranslate">@celeb.Name</div>
-                    </td>
-                    <td>
-                      @(Math.Round((double)celeb.Confidence, 3) * 100)%
-                    </td>
-                  </tr>
-                  }
+                <tr>
+                  <td>
+                    <div class="notranslate">@celeb.Name</div>
+                  </td>
+                  <td>
+                    @((celeb.Confidence*100).ToString("0.00"))%
+                  </td>
+                </tr>
                 }
               }
             }
-            @foreach(var category in Model.Categories)
+          }
+          @foreach(var category in Model.Categories)
+          {
+            @if(category.Detail?.Landmarks != null)
             {
-              @if(category.Detail?.Landmarks != null)
+              @foreach (var landmark in category.Detail.Landmarks)
               {
-                @foreach (var landmark in category.Detail.Landmarks)
+                if(landmark.Confidence >=0.75)
                 {
-                  if(landmark.Confidence >=0.75)
-                  {
-                  <tr>
-                    <td>
-                      <div class="notranslate">@landmark.Name</div>
-                    </td>
-                    <td>
-                      @(Math.Round((double)landmark.Confidence, 3) * 100)%
-                    </td>
-                  </tr>
-                  }
-                }
-              }
-            } 
-            @foreach(var tag in Model.Tags)
-            {
-              if(tag.Confidence >= 0.75)
-              {
                 <tr>
                   <td>
-                    <div class="notranslate">@tag.Name</div>
+                    <div class="notranslate">@landmark.Name</div>
                   </td>
                   <td>
-                    @(Math.Round((double)tag.Confidence, 3) * 100)%
+                    @((landmark.Confidence*100).ToString("0.00"))%
                   </td>
                 </tr>
-              }
-            }
-            @foreach(var obj in Model.Objects)
-            {
-              if(obj.Confidence >= 0.75)
-              {
-                <tr>
-                  <td>
-                    <div class="notranslate">@obj.ObjectProperty</div>
-                  </td>
-                  <td>
-                    @(Math.Round((double)obj.Confidence, 3) * 100)%
-                  </td>
-                </tr>
-              }
-            }      
-            </tbody>
-        </table>
-        <table id="translatedTable" class="table table-bordered table-striped mb-0">
-          <thead>
-            <tr>
-              <th scope="col" class="notranslate">English</th>
-              <th scope="col" class="notranslate">Object/Tag</th>
-              <th scope="col" class="notranslate">AI Confidence</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach(var catergory in Model.Categories)
-            {
-              @if(catergory.Detail?.Celebrities != null)
-              {
-                @foreach (var celeb in catergory.Detail.Celebrities)
-                {
-                  if(celeb.Confidence >=0.75)
-                  {
-                  <tr>
-                    <td>
-                      <div class="notranslate">@celeb.Name</div>
-                    </td>
-                    <td>
-                      @celeb.Name
-                    </td>
-                    <td>
-                      @(Math.Round((double)celeb.Confidence, 3) * 100)%
-                    </td>
-                  </tr>
-                  }
                 }
               }
             }
-            @foreach(var category in Model.Categories)
+          } 
+          @foreach(var tag in Model.Tags)
+          {
+            if(tag.Confidence >= 0.75)
             {
-              @if(category.Detail?.Landmarks != null)
-              {
-                @foreach (var landmark in category.Detail.Landmarks)
-                {
-                  if(landmark.Confidence >=0.75)
-                  {
-                  <tr>
-                    <td>
-                      <div class="notranslate">@landmark.Name</div>
-                    </td>
-                    <td>
-                      @landmark.Name
-                    </td>
-                    <td>
-                      @(Math.Round((double)landmark.Confidence, 3) * 100)%
-                    </td>
-                  </tr>
-                  }
-                }
-              }
-            } 
-            @foreach(var tag in Model.Tags)
-            {
-              if(tag.Confidence >= 0.75)
-              {
-                <tr>
-                  <td>
-                    <div class="notranslate">@tag.Name</div>
-                  </td>
-                  <td>
-                    @tag.Name
-                  </td>
-                  <td>
-                    @(Math.Round((double)tag.Confidence, 3) * 100)%
-                  </td>
-                </tr>
-              }
+              <tr>
+                <td>
+                  <div class="notranslate">@tag.Name</div>
+                </td>
+                <td>
+                  @((tag.Confidence*100).ToString("0.00"))%
+                </td>
+              </tr>
             }
-            @foreach(var obj in Model.Objects)
+          }
+          @foreach(var obj in Model.Objects)
+          {
+            if(obj.Confidence >= 0.75)
             {
-              if(obj.Confidence >= 0.75)
-              {
-                <tr>
-                  <td>
-                    <div class="notranslate">@obj.ObjectProperty</div>
-                  </td>
-                  <td>
-                    @obj.ObjectProperty
-                  </td>
-                  <td>
-                    @(Math.Round((double)obj.Confidence, 3) * 100)%
-                  </td>
-                </tr>
-              }
-            }      
+              <tr>
+                <td>
+                  <div class="notranslate">@obj.ObjectProperty</div>
+                </td>
+                <td>
+                  @((obj.Confidence*100).ToString("0.00"))%
+                </td>
+              </tr>
+            }
+          }      
           </tbody>
-        </table>
-      </div>  
-    </div>
-  </div>   
+      </table>
+      <table id="translatedTable" class="table table-bordered table-striped mb-0">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="notranslate">English</th>
+            <th scope="col" class="notranslate">Object/Tag</th>
+            <th scope="col" class="notranslate">AI Confidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach(var catergory in Model.Categories)
+          {
+            @if(catergory.Detail?.Celebrities != null)
+            {
+              @foreach (var celeb in catergory.Detail.Celebrities)
+              {
+                if(celeb.Confidence >=0.75)
+                {
+                <tr>
+                  <td>
+                    <div class="notranslate">@celeb.Name</div>
+                  </td>
+                  <td>
+                    @celeb.Name
+                  </td>
+                  <td>
+                    @((celeb.Confidence*100).ToString("0.00"))%
+                  </td>
+                </tr>
+                }
+              }
+            }
+          }
+          @foreach(var category in Model.Categories)
+          {
+            @if(category.Detail?.Landmarks != null)
+            {
+              @foreach (var landmark in category.Detail.Landmarks)
+              {
+                if(landmark.Confidence >=0.75)
+                {
+                <tr>
+                  <td>
+                    <div class="notranslate">@landmark.Name</div>
+                  </td>
+                  <td>
+                    @landmark.Name
+                  </td>
+                  <td>
+                    @((landmark.Confidence*100).ToString("0.00"))%
+                  </td>
+                </tr>
+                }
+              }
+            }
+          } 
+          @foreach(var tag in Model.Tags)
+          {
+            if(tag.Confidence >= 0.75)
+            {
+              <tr>
+                <td>
+                  <div class="notranslate">@tag.Name</div>
+                </td>
+                <td>
+                  @tag.Name
+                </td>
+                <td>
+                  @((tag.Confidence*100).ToString("0.00"))%
+                </td>
+              </tr>
+            }
+          }
+          @foreach(var obj in Model.Objects)
+          {
+            if(obj.Confidence >= 0.75)
+            {
+              <tr>
+                <td>
+                  <div class="notranslate">@obj.ObjectProperty</div>
+                </td>
+                <td>
+                  @obj.ObjectProperty
+                </td>
+                <td>
+                  @((obj.Confidence*100).ToString("0.00"))%
+                </td>
+              </tr>
+            }
+          }      
+        </tbody>
+      </table>
+    </div>  
+  </div>
 </div>
+<br>
+<hr>
+@using (Html.BeginForm("Details", "Home"))
+{
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 column">
+        <h3 class="notranslate">ENTER URL: </h3>
+        <h6 class="notranslate">(URLs ending in .jpg .png .bmp ONLY)</h6>
+        @Html.TextBox("imageUrl", null, new { @class="form-control"})
+      </div>
+      <div class="col-md-6 column">
+        <br>
+        <br>
+        <br>
+        <input type = "submit" value = "Submit Image" class = "btn btn-warning notranslate"/>
+      </div>
+    </div>
+  </div>      
+}   

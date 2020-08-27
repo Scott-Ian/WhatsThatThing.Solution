@@ -11,17 +11,17 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Whats That Thing</a>
+            <a class="navbar-brand notranslate" asp-controller="Home" asp-action="Index">Whats That Thing</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        <a class="nav-link text-light notranslate" asp-area="" asp-controller="Home" asp-action="About">About</a>
                     </li>
                 </ul>
-                <span class="navbar-text">
+                <span class="navbar-text notranslate">
                 Universal Translator
                 </span>
 
@@ -33,12 +33,6 @@
         @RenderBody()
     </main>
 
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - WhatsThatThing - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
